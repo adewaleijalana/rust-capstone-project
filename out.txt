@@ -1,0 +1,10 @@
+6f3d672e82e92230ae559388fdf3bd5cfd7ec96c4f206c6058c7730239b7b883
+bcrt1qgtjdwp3965l759p0r8rp803wrsumwv952w78yx
+50
+bcrt1qr02vh6lkw3qpzddpeq8wmt0vs6truedfwnhhx5
+20
+bcrt1qlgxfmxnaweplemhqy8apvw6kftxxt6z5y9kgug
+29.99999859
+-1.41e-6
+102
+1eddb912065f3adf4428a4fbb2bdf96ac5f70c802b0502862948aff30f97558f
