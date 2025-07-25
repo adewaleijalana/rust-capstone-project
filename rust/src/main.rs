@@ -65,7 +65,8 @@ fn main() -> bitcoincore_rpc::Result<()> {
     let miner_address = miner_address
         .require_network(bitcoincore_rpc::bitcoin::Network::Regtest)
         .unwrap();
-    let _ = miner_rpc.generate_to_address(101, &miner_address)?;
+
+    let _block_hashes = miner_rpc.generate_to_address(101, &miner_address)?;
 
     // Load Trader wallet and generate a new address
     let trader_address = trader_rpc.get_new_address(None, None)?;
@@ -90,7 +91,7 @@ fn main() -> bitcoincore_rpc::Result<()> {
     assert!(mempool.contains(&txid), "TX not in mempool!");
 
     // Mine 1 block to confirm the transaction
-    let _ = miner_rpc.generate_to_address(1, &miner_address)?;
+    let _block_hashes = miner_rpc.generate_to_address(1, &miner_address)?;
 
     // Extract all required transaction details
     let tx = rpc.get_raw_transaction_info(&txid, None)?;
@@ -186,11 +187,11 @@ fn main() -> bitcoincore_rpc::Result<()> {
 
 //I created this method for creating or loading wallet and return the RPC client to interact with the wallet
 fn create_load_wallet(rpc: &Client, wallet_name: &str) -> bitcoincore_rpc::Result<Client> {
-    let _ = rpc.load_wallet(wallet_name);
+    let _rpc = rpc.load_wallet(wallet_name);
 
     let wallet_path = format!("{}/wallet/{}", std::env::var("HOME").unwrap(), wallet_name);
     if !Path::new(&wallet_path).exists() {
-        let _ = rpc.create_wallet(wallet_name, None, None, None, None);
+        let _rpc = rpc.create_wallet(wallet_name, None, None, None, None);
     }
 
     //This is to return a client to interact with the wallet
